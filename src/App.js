@@ -9,18 +9,23 @@ import Film from "./components/Film";
 import LogBar from "./components/LogBar";
 import { useEffect, useState } from "react";
 function App() {
-  const [listStarW, setListStarW] = useState([]);
-  const getApiSW = async () => {
-    const res = await fetch(
-      "http://api.tvmaze.com/search/shows?q=star%20wars."
-    );
-    const resJson = await res.json();
-    setListStarW(resJson);
-  };
+   const [listStarW, setListStarW] = useState([]);
+   const getApiSW = async () => {
+     try {
+      const res = await fetch(
+        "http://api.tvmaze.com/search/shows?q=star%20wars."
+      );
+      const resJson = await res.json();
+      setListStarW(resJson);
+     } catch (error) {
+       console.log(error);
+     }
+          
+   };
 
-  useEffect(() => {
-    getApiSW();
-  }, []);
+   useEffect(() => {
+     getApiSW();
+   }, []);
 
   return (
     <div className="">
@@ -28,7 +33,7 @@ function App() {
         <main>
           <LogBar></LogBar>
           <Routes>
-            <Route exact path="/" element={<Index></Index>}></Route>
+            <Route exact path="/" element={<Index listStarW={listStarW}></Index>}></Route>
             <Route
               exact
               path="/ListFilms"
