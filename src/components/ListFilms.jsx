@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
-const ListFilms = () => {
+const ListFilms = ({ listStarW }) => {
   return (
     <div className="">
       <div className="fs-3 text-end container-fluid mt-3">
@@ -39,18 +39,11 @@ const ListFilms = () => {
       <div>
         <Container>
           <Row>
-            <Col xs={6} sm={6} md={6} lg={4}>
-              <CardFilm />
-            </Col>
-            <Col xs={6} sm={6} md={6} lg={4}>
-              <CardFilm />
-            </Col>
-            <Col xs={6} sm={6} md={6} lg={4}>
-              <CardFilm />
-            </Col>
-            <Col xs={6} sm={6} md={6} lg={4}>
-              <CardFilm />
-            </Col>
+            {listStarW.map((film) => (
+              <Col xs={6} sm={6} md={6} lg={4} key={film.show.id}>
+                <CardFilm film={film} />
+              </Col>
+            ))}
           </Row>
         </Container>
       </div>
