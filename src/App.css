@@ -2,6 +2,8 @@
 
 *{
   font-family: 'Nunito', sans-serif;
+  background-color: #142a41;
+  margin: 0;
 }
 
 .App {
@@ -42,3 +44,17 @@
     transform: rotate(360deg);
   }
 }
+
+.logo-app{
+  width: 35%;
+  margin: 0;
+  padding: 0;
+}
+
+@media all and (max-width:768px){
+ .logo-app{
+   width: 100%;
+   padding: 0;
+ }
+}
+
