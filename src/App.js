@@ -6,12 +6,14 @@ import ListFilms from './components/ListFilms';
 import Login from './components/Login';
 import CreateAcc from './components/CreateAcc';
 import Film from './components/Film';
+import LogBar from './components/LogBar';
 function App() {
   
   return (
     <div className="">      
-      <BrowserRouter>
+      <BrowserRouter>      
       <main>
+      <LogBar></LogBar>
         <Routes>
           <Route exact path='/' element={<Index></Index>}></Route>
           <Route exact path='/ListFilms' element={<ListFilms></ListFilms>}></Route>

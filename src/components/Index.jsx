@@ -6,6 +6,7 @@ import {
 import React from "react";
 import logo from "./img/popcorn.png";
 import { Link } from "react-router-dom";
+import LogBar from "./LogBar";
 const Index = () => {
   return (
     <div>
@@ -22,12 +23,13 @@ const Index = () => {
             className="mx-2 text-white"
           />
         </Link>
+        {/* <LogBar></LogBar> */}
       </div>
       <div className="text-center">
         <img src={logo} alt="logo pop corn" className="logo-app" />
       </div>
       <div className="text-center text-warning">
-        <h1>MoviePop!</h1>
+        <h1 className="fw-bold">MoviePop!</h1>
       </div>
     </div>
   );
