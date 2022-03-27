@@ -33,7 +33,7 @@ function App() {
         <main>
           <LogBar></LogBar>
           <Routes>
-            <Route exact path="/" element={<Index listStarW={listStarW}></Index>}></Route>
+            <Route exact path="/" element={<Index></Index>}></Route>
             <Route
               exact
               path="/ListFilms"
@@ -46,6 +46,7 @@ function App() {
               element={<CreateAcc></CreateAcc>}
             ></Route>
             <Route exact path="/Film" element={<Film></Film>}></Route>
+            <Route exact path="/Film/:id" element={<Film></Film>}></Route>
           </Routes>
         </main>
       </BrowserRouter>
