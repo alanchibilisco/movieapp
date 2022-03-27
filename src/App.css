@@ -51,10 +51,17 @@
   padding: 0;
 }
 
+.color-input{
+  background-color: #23394e;
+  border:0;  
+}
+
 @media all and (max-width:768px){
  .logo-app{
    width: 100%;
    padding: 0;
  }
 }
+
+::placeholder{color: white};
 

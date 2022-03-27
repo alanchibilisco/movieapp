@@ -5,6 +5,7 @@ import Index from './components/Index';
 import ListFilms from './components/ListFilms';
 import Login from './components/Login';
 import CreateAcc from './components/CreateAcc';
+import Film from './components/Film';
 function App() {
   
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='/ListFilms' element={<ListFilms></ListFilms>}></Route>
           <Route exact path='/Login' element={<Login></Login>}></Route>
           <Route exact path='/CreateAccount' element={<CreateAcc></CreateAcc>}></Route>
+          <Route exact path='/Film' element={<Film></Film>}></Route>
         </Routes>
       </main>
       </BrowserRouter>
