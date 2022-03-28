@@ -26,7 +26,7 @@ function App() {
    useEffect(() => {
      getApiSW();
    }, []);
-
+   console.log(listStarW);
   return (
     <div className="">
       <BrowserRouter>

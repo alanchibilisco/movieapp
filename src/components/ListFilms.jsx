@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,17 +9,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
 const ListFilms = ({ listStarW }) => {
   console.log(listStarW);
-  const [listFilms, setListFilms] = useState([]);
+  const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
-  console.log(listFilms);
-  useEffect(() => {
-    setListFilms(listStarW);
-  }, [listStarW]);  
+  console.log(listFilms); 
   const getFilms = async (value) => {
     if (value === "") {
       setListFilms(listStarW);
     } else {
-       try {
+      try {
         const res = await fetch(
           `http://api.tvmaze.com/search/shows?q=${value}.`
         );
@@ -29,10 +26,13 @@ const ListFilms = ({ listStarW }) => {
         console.log(error);
       }
     }
-  };
-  useEffect(()=>{
+  }; 
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log('desde submit');
+    console.log(search);
     getFilms(search);
-  }, [search])
+  }
 
   return (
     <div className="">
@@ -49,15 +49,16 @@ const ListFilms = ({ listStarW }) => {
       </div>
       <div className="container my-3">
         <div className="container">
-          <form className="text-white">
+          <form className="text-white" onSubmit={handleSubmit}>
+            <div className="d-flex justify-content-center">
             <input
-              type="text"
+              type="text submit"
               placeholder="Buscar"
-              className="text-white rounded color-input w-100 px-2 py-2"
+              className="text-white color-input w-100 rounded px-2 py-2"
               onChange={({ target }) => {
                 setSearch(target.value.trimStart());
-              }}
-            />
+              }} />            
+            </div>
           </form>
         </div>
       </div>
@@ -65,8 +66,17 @@ const ListFilms = ({ listStarW }) => {
         <h2 className="fw-bold">Películas</h2>
         <hr />
       </div>
-       <div>
-        {listFilms.length > 0 ? (
+      {listFilms[0].show === undefined ? (
+        <div className="text.white">
+          <h1 className="text-white">Aqui esta el error</h1>
+          <div>
+            <h2 className="text-white text-center">
+              No se encontraron peliculas
+            </h2>
+          </div>
+        </div>
+      ) : (
+        <div>
           <Container>
             <Row>
               {listFilms.map((film) => (
@@ -76,14 +86,8 @@ const ListFilms = ({ listStarW }) => {
               ))}
             </Row>
           </Container>
-        ) : (
-          <div>
-            <h2 className="text-white text-center">
-              No se encontraron peliculas
-            </h2>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

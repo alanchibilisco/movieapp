@@ -37,10 +37,8 @@ const Film = () => {
             <div className="text-center">
               <img
                 src={filmS.image.original}
-                alt="logo"
-                width="75%"
-                height="300px"
-                className="border border-2 border-white"
+                alt="logo"                
+                className="img-film"
               />
             </div>
 
@@ -48,10 +46,10 @@ const Film = () => {
               {filmS.name}
             </h3>
             <div className="text-start">
-              <h6 className="text-white">Lenguaje: {filmS.language}</h6>
-              <h6 className="text-white">Genero: {filmS.genres.join(", ")}</h6>
+              <h6 className="text-white"><b>Lenguaje:</b> {filmS.language}</h6>
+              <h6 className="text-white"><b>Genero:</b> {filmS.genres.join(", ")}</h6>
               <h6 className="text-white">
-                Fecha de estreno: {filmS.premiered}
+                <b>Fecha de estreno:</b> {filmS.premiered}
               </h6>
             </div>
             <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
