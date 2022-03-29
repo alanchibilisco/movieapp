@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,9 +7,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
+import InfiniteScroll from "react-infinite-scroll-component";
 const ListFilms = ({ listStarW }) => {
   const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
+  const [scroll, setScroll] = useState(listStarW);
+  const [page, setPage] = useState(1);
+  let id = 0;
   const getFilms = async (value) => {
     if (value === "") {
       setListFilms(listStarW);
@@ -20,6 +24,7 @@ const ListFilms = ({ listStarW }) => {
         );
         const resJson = await res.json();
         setListFilms(resJson);
+        setScroll(resJson);
       } catch (error) {
         console.log(error);
       }
@@ -29,6 +34,9 @@ const ListFilms = ({ listStarW }) => {
     e.preventDefault();
     getFilms(search);
   };
+  useEffect(() => {
+    setListFilms((prevListFilms) => prevListFilms.concat(scroll));
+  }, [page]);
 
   return (
     <div className="">
@@ -75,13 +83,22 @@ const ListFilms = ({ listStarW }) => {
       ) : (
         <div>
           <Container>
-            <Row>
-              {listFilms.map((film) => (
-                <Col xs={6} sm={6} md={6} lg={4} key={film.show.id}>
-                  <CardFilm film={film} />
-                </Col>
-              ))}
-            </Row>
+            <InfiniteScroll
+              dataLength={listFilms.length}
+              hasMore={true}
+              next={() => {
+                setPage((prevPage) => prevPage + 1);
+              }}
+              loader={<h3 className="text-white fw-bold">Loading...</h3>}
+            >
+              <Row>
+                {listFilms.map((film) => (
+                  <Col xs={6} sm={6} md={6} lg={4} key={id++}>
+                    <CardFilm film={film} />
+                  </Col>
+                ))}
+              </Row>
+            </InfiniteScroll>
           </Container>
         </div>
       )}

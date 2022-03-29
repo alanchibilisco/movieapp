@@ -23,8 +23,8 @@ const Film = () => {
         </Link>
       </div>
       {filmS.image === undefined ? (
-        <div className="text.white">
-          <h1>Aqui esta el error</h1>
+        <div className="text-white fw-bold text-center">
+          <h1>Loading...</h1>
         </div>
       ) : (
         <div className="text-white my-5">
