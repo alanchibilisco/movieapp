@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
-import logo from "./img/popcorn.png";
 const Film = () => {
   const [filmS, setFilmS] = useState({});
   const { id } = useParams();

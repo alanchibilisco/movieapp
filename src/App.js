@@ -24,6 +24,8 @@ function App() {
   useEffect(() => {
     getApiSW();
   }, []);
+  const URLSuperUser=process.env.REACT_APP_API_SUPERUSER;
+  const URLUsers=process.env.REACT_APP_API_USERS;
   return (
     <div className="">
       <BrowserRouter>
@@ -36,7 +38,7 @@ function App() {
               path="/ListFilms"
               element={<ListFilms listStarW={listStarW}></ListFilms>}
             ></Route>
-            <Route exact path="/Login" element={<Login></Login>}></Route>
+            <Route exact path="/Login" element={<Login URLSuperUser={URLSuperUser} URLUsers={URLUsers}></Login>}></Route>
             <Route
               exact
               path="/CreateAccount"

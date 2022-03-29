@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,11 +6,74 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const Login = () => {
+import { testPass, testEmail } from "./Helpers";
+const Login = ({URLSuperUser, URLUsers}) => {
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [inputUser, setInputUser] = useState("");
+  const [inputPass, setInputPass] = useState("");
+  const [superUser, setSuperUser]=useState([]);
+  const [users, setUsers]=useState([]);
+  useEffect(()=>{
+    setInputUser(document.getElementById("inputUser"));
+    setInputPass(document.getElementById("inputPass"));
+    getAPISU();
+    getAPIUS();
+  },[]);
+  const getAPISU=async()=>{
+    try {
+      const res=await fetch(URLSuperUser);
+      const resJson=await res.json();
+      setSuperUser(resJson);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getAPIUS=async()=>{
+    try {
+      const res=await fetch(URLUsers);
+      const resJson=await res.json();
+      setUsers(resJson);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const testUser=()=>{
+    if (testEmail(user)) {
+      inputUser.className="form-control is-valid";
+      return true;
+    }else{
+      inputUser.className="form-control is-invalid";
+      return false;
+    }
+  };
+  const testPassw=()=>{
+    if (testPass(pass)) {
+      inputPass.className="form-control is-valid";
+      return true;
+    }else{
+      inputPass.className="form-control is-invalid";
+      return false;
+    }
+  };
+  const gralTest=()=>{
+    if (testUser()&&testPassw()) {
+      return true;
+    }else{
+      return false;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("desde submit");
+    console.log(user);
+    console.log(pass);
   };
+  console.log(inputUser);
+  console.log(inputPass);
+  console.log(superUser);
+  console.log(users);
   return (
     <div className="text-white">
       <div className="fs-3 text-end container-fluid mt-3">
@@ -38,6 +101,10 @@ const Login = () => {
                   type="email"
                   required
                   id="inputUser"
+                  onChange={({ target }) => {
+                    setUser(target.value.trimStart());
+                    testUser();
+                  }}
                 ></Form.Control>
               </Form.Group>
               <Form.Group className="my-3">
@@ -51,6 +118,10 @@ const Login = () => {
                   minLength={8}
                   maxLength={16}
                   id="inputPass"
+                  onChange={({ target }) => {
+                    setPass(target.value.trimStart());
+                    testPassw();
+                  }}
                 ></Form.Control>
               </Form.Group>
               <div className="text-end">
