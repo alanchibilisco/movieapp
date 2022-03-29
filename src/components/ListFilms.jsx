@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,6 @@ import CardFilm from "./CardFilm";
 const ListFilms = ({ listStarW }) => {
   const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
-  console.log(listFilms);
   const getFilms = async (value) => {
     if (value === "") {
       setListFilms(listStarW);
@@ -20,10 +19,7 @@ const ListFilms = ({ listStarW }) => {
           `http://api.tvmaze.com/search/shows?q=${value}.`
         );
         const resJson = await res.json();
-        console.log(resJson[0].show.image.original);
         setListFilms(resJson);
-        
-        console.log('se consulto la api de listFilm.js');
       } catch (error) {
         console.log(error);
       }
@@ -31,7 +27,6 @@ const ListFilms = ({ listStarW }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('desde submit listFilms');    
     getFilms(search);
   };
 
@@ -68,7 +63,7 @@ const ListFilms = ({ listStarW }) => {
         <h2 className="fw-bold">Películas</h2>
         <hr />
       </div>
-      {listFilms[0].show=== undefined ? (
+      {listFilms[0].show === undefined ? (
         <div className="text.white">
           <h1 className="text-white">Aqui esta el error</h1>
           <div>

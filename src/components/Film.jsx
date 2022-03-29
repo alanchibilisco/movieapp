@@ -5,15 +5,12 @@ import { Link, useParams } from "react-router-dom";
 import logo from "./img/popcorn.png";
 const Film = () => {
   const [filmS, setFilmS] = useState({});
-  console.log(filmS);
-  console.log(filmS.image === undefined);
   const { id } = useParams();
   useEffect(async () => {
     try {
       const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
       const resJson = await res.json();
       setFilmS(resJson);
-      console.log(resJson);
     } catch (error) {
       console.log(error);
     }
@@ -30,9 +27,7 @@ const Film = () => {
           <h1>Aqui esta el error</h1>
         </div>
       ) : (
-        <div className="text-white">
-          <h1>Aqui no esta el error</h1>
-
+        <div className="text-white my-5">
           <div className="container-fluid">
             <div className="text-center">
               <img src={filmS.image.original} alt="logo" className="img-film" />
@@ -53,7 +48,10 @@ const Film = () => {
               </h6>
             </div>
             <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
-            <div className="text-white">{filmS.summary}</div>
+            <div
+              className="text-white"
+              dangerouslySetInnerHTML={{ __html: filmS.summary }}
+            ></div>
           </div>
         </div>
       )}
