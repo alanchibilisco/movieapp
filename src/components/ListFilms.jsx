@@ -8,10 +8,9 @@ import {
 import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
 const ListFilms = ({ listStarW }) => {
-  console.log(listStarW);
   const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
-  console.log(listFilms); 
+  console.log(listFilms);
   const getFilms = async (value) => {
     if (value === "") {
       setListFilms(listStarW);
@@ -21,18 +20,20 @@ const ListFilms = ({ listStarW }) => {
           `http://api.tvmaze.com/search/shows?q=${value}.`
         );
         const resJson = await res.json();
+        console.log(resJson[0].show.image.original);
         setListFilms(resJson);
+        
+        console.log('se consulto la api de listFilm.js');
       } catch (error) {
         console.log(error);
       }
     }
-  }; 
-  const handleSubmit=(e)=>{
+  };
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('desde submit');
-    console.log(search);
+    console.log('desde submit listFilms');    
     getFilms(search);
-  }
+  };
 
   return (
     <div className="">
@@ -51,13 +52,14 @@ const ListFilms = ({ listStarW }) => {
         <div className="container">
           <form className="text-white" onSubmit={handleSubmit}>
             <div className="d-flex justify-content-center">
-            <input
-              type="text submit"
-              placeholder="Buscar"
-              className="text-white color-input w-100 rounded px-2 py-2"
-              onChange={({ target }) => {
-                setSearch(target.value.trimStart());
-              }} />            
+              <input
+                type="text submit"
+                placeholder='Buscar "press enter to confirm"'
+                className="text-white color-input w-100 rounded px-2 py-2"
+                onChange={({ target }) => {
+                  setSearch(target.value.trimStart());
+                }}
+              />
             </div>
           </form>
         </div>
@@ -66,7 +68,7 @@ const ListFilms = ({ listStarW }) => {
         <h2 className="fw-bold">Películas</h2>
         <hr />
       </div>
-      {listFilms[0].show === undefined ? (
+      {listFilms[0].show=== undefined ? (
         <div className="text.white">
           <h1 className="text-white">Aqui esta el error</h1>
           <div>

@@ -9,24 +9,25 @@ import Film from "./components/Film";
 import LogBar from "./components/LogBar";
 import { useEffect, useState } from "react";
 function App() {
-   const [listStarW, setListStarW] = useState([]);
-   const getApiSW = async () => {
-     try {
-      const res = await fetch(
-        "http://api.tvmaze.com/search/shows?q=star%20wars."
-      );
-      const resJson = await res.json();
-      setListStarW(resJson);
-     } catch (error) {
-       console.log(error);
-     }
+    const [listStarW, setListStarW] = useState([]);
+    const getApiSW = async () => {
+      try {
+       const res = await fetch(
+         "http://api.tvmaze.com/search/shows?q=star%20wars."
+       );
+       const resJson = await res.json();
+       setListStarW(resJson);
+       console.log("se consulto la api de app.js");
+      } catch (error) {
+        console.log(error);
+      }
           
-   };
+    };
 
-   useEffect(() => {
-     getApiSW();
-   }, []);
-   console.log(listStarW);
+    useEffect(() => {
+      getApiSW();     
+    },[]);
+    console.log(listStarW);
   return (
     <div className="">
       <BrowserRouter>

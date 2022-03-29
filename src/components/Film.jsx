@@ -35,29 +35,25 @@ const Film = () => {
 
           <div className="container-fluid">
             <div className="text-center">
-              <img
-                src={filmS.image.original}
-                alt="logo"                
-                className="img-film"
-              />
+              <img src={filmS.image.original} alt="logo" className="img-film" />
             </div>
 
             <h3 className="text-white text-center fw-bold my-3">
               {filmS.name}
             </h3>
             <div className="text-start">
-              <h6 className="text-white"><b>Lenguaje:</b> {filmS.language}</h6>
-              <h6 className="text-white"><b>Genero:</b> {filmS.genres.join(", ")}</h6>
+              <h6 className="text-white">
+                <b>Lenguaje:</b> {filmS.language}
+              </h6>
+              <h6 className="text-white">
+                <b>Genero:</b> {filmS.genres.join(", ")}
+              </h6>
               <h6 className="text-white">
                 <b>Fecha de estreno:</b> {filmS.premiered}
               </h6>
             </div>
             <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
-            <div className="text-white">
-              <p>
-                {filmS.summary}
-              </p>
-            </div>
+            <div className="text-white">{filmS.summary}</div>
           </div>
         </div>
       )}
