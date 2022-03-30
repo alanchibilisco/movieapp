@@ -9,6 +9,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LogBar from "./LogBar";
+import imageNotFound from "./img/image-not-found.png";
 const ListFilms = ({ listStarW }) => {
   const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
@@ -38,6 +39,9 @@ const ListFilms = ({ listStarW }) => {
   useEffect(() => {
     setListFilms((prevListFilms) => prevListFilms.concat(scroll));
   }, [page]);
+  useEffect(() => {
+    setListFilms(listStarW);
+  }, [listStarW]);
 
   return (
     <div className="">
@@ -73,7 +77,7 @@ const ListFilms = ({ listStarW }) => {
         <h2 className="fw-bold">Películas</h2>
         <hr />
       </div>
-      {listFilms[0].show === undefined ? (
+      {listFilms.length === 0 ? (
         <div className="text.white">
           <h1 className="text-white">Aqui esta el error</h1>
           <div>
@@ -96,7 +100,7 @@ const ListFilms = ({ listStarW }) => {
               <Row>
                 {listFilms.map((film) => (
                   <Col xs={6} sm={6} md={6} lg={4} key={id++}>
-                    <CardFilm film={film} />
+                    <CardFilm film={film} />                   
                   </Col>
                 ))}
               </Row>

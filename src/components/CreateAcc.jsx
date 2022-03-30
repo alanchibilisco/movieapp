@@ -74,7 +74,7 @@ const CreateAcc = ({URLUsers}) => {
           const newUser={
             userName: user,
             password: pass,
-            favouriteFilms: []
+            favoriteFilms: []
           };
           create(newUser);
           navigate("/Login");

@@ -10,20 +10,14 @@
     {
       "userName": "test@sitenso.com",
       "password": "Sitenso123",
-      "favouriteFilms": [],
+      "favoriteFilms": [],
       "id": 1
     },
     {
-      "user": "test2@example.com",
-      "pass": "Testing12345",
-      "favouriteFilms": [],
+      "userName": "test2@sitenso.com",
+      "password": "test2Sitenso",
+      "favoriteFilms": [],
       "id": 2
-    },
-    {
-      "userName": "test3@sitenso.com",
-      "password": "Test3sitenso",
-      "favouriteFilms": [],
-      "id": 3
     }
   ]
 }
