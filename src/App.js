@@ -8,6 +8,7 @@ import CreateAcc from "./components/CreateAcc";
 import Film from "./components/Film";
 import LogBar from "./components/LogBar";
 import { useEffect, useState } from "react";
+import Adm from "./components/Adm";
 function App() {
   const [listStarW, setListStarW] = useState([]);
   const getApiSW = async () => {
@@ -45,6 +46,7 @@ function App() {
             ></Route>
             <Route exact path="/Film" element={<Film></Film>}></Route>
             <Route exact path="/Film/:id" element={<Film></Film>}></Route>
+            <Route exact path="/Adm" element={<Adm URLUsers={URLUsers}></Adm>}></Route>
           </Routes>
         </main>
       </BrowserRouter>
