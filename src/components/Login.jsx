@@ -91,8 +91,10 @@ const Login = ({ URLSuperUser, URLUsers }) => {
       } else if (user === findUser().userName && pass === findUser().password) {
         session = true;
         const user = findUser().userName;
+        const userOBJ=findUser();
         sessionStorage.setItem("stateSession", JSON.stringify(session));
         sessionStorage.setItem("userSession", JSON.stringify(user));
+        sessionStorage.setItem("userOBJ", JSON.stringify(userOBJ.id));
         navigate("/");
         return alert(`Bienvenido usuario: ${findUser().userName}`);        
       } else {

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import imageNotFound from "./img/image-not-found.png";
-const CardFilm = ({ film }) => {
-  console.log(film);
+const CardFilm = ({ film }) => {  
   return (
     <div className="my-2">      
       {film.show.image === undefined && film.show.image === null ? (
