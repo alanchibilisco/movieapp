@@ -7,7 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { testPass, testEmail } from "./Helpers";
+import Swal from "sweetalert2";
 const Login = ({URLSuperUser, URLUsers}) => {
+  
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [inputUser, setInputUser] = useState("");
@@ -64,8 +66,39 @@ const Login = ({URLSuperUser, URLUsers}) => {
     }
   };
 
+  let session=false;
+  const findUser=()=>{
+    const newUser=users.find((userS)=>{
+      return userS.userName===user;
+    });
+    if (newUser !== undefined) {
+      return newUser;
+    }else{
+      return "";
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (gralTest()) {
+      if (user===superUser[0].userName&&pass===superUser[0].password) {
+        session=true;
+        const user='superUser';
+        sessionStorage.setItem("stateSession", JSON.stringify(session));
+        sessionStorage.setItem("userSession", JSON.stringify(user));        
+        return alert("BIENVENIDO ADMINISTRADOR");
+      } else if(user===findUser().userName&&pass===findUser().password){
+        session=true;
+        const user=findUser().userName;
+        sessionStorage.setItem("stateSession", JSON.stringify(session));
+        sessionStorage.setItem("userSession", JSON.stringify(user)); 
+        return alert(`Bienvenido usuario: ${findUser().userName}`);         
+      } else{
+        return alert('USUARIO O CONTRASEÑA INCORRECTO');  
+      }     
+    }else{
+      return alert('DEBE COMPLETAR TODOS LOS CAMPOS');
+    }
     console.log("desde submit");
     console.log(user);
     console.log(pass);
@@ -91,10 +124,10 @@ const Login = ({URLSuperUser, URLUsers}) => {
         <Row>
           <Col xs={12} md={2} lg={4}></Col>
           <Col xs={12} md={8} lg={4} className="my-5">
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} noValidate>
               <Form.Group className="my-3">
                 <Form.Label htmlFor="inputUser">
-                  Ingrese su usuario o email
+                  Ingrese su email
                 </Form.Label>
                 <Form.Control
                   placeholder="example@example.com"

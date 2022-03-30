@@ -1,15 +1,15 @@
 {
     "superUser":[
         {
-            "userName": "admin",
-            "password": "sitenso",
+            "userName": "admin@sitenso.com",
+            "password": "Sitenso123",
             "id": 1
         }
     ],
     "users":[
         {
             "userName": "test@sitenso.com",
-            "password": "sitenso",
+            "password": "Sitenso123",
             "favouriteFilms": [],
             "id": 1
         }   
