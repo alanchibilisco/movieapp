@@ -1,19 +1,29 @@
 {
-    "superUser":[
-        {
-            "userName": "admin@sitenso.com",
-            "password": "Sitenso123",
-            "id": 1
-        }
-    ],
-    "users":[
-        {
-            "userName": "test@sitenso.com",
-            "password": "Sitenso123",
-            "favouriteFilms": [],
-            "id": 1
-        }   
-    
-    ]
-
+  "superUser": [
+    {
+      "userName": "admin@sitenso.com",
+      "password": "Sitenso123",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "userName": "test@sitenso.com",
+      "password": "Sitenso123",
+      "favouriteFilms": [],
+      "id": 1
+    },
+    {
+      "user": "test2@example.com",
+      "pass": "Testing12345",
+      "favouriteFilms": [],
+      "id": 2
+    },
+    {
+      "userName": "test3@sitenso.com",
+      "password": "Test3sitenso",
+      "favouriteFilms": [],
+      "id": 3
+    }
+  ]
 }

@@ -11,9 +11,7 @@ import { Nav } from "react-bootstrap";
 const LogBar = () => {
   const navigate=useNavigate();
   let session=JSON.parse(sessionStorage.getItem("stateSession"))||false;
-  let userSession=JSON.parse(sessionStorage.getItem("userSession"))||"";
-  console.log(session);
-  console.log(userSession);
+  let userSession=JSON.parse(sessionStorage.getItem("userSession"))||"";  
   const handleClose=()=>{
     if(session){
       session=false;

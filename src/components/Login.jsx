@@ -40,8 +40,8 @@ const Login = ({ URLSuperUser, URLUsers }) => {
       console.log(error);
     }
   };
-  const testUser = () => {
-    if (testEmail(user)) {
+   const testUser = () => {
+    if (testEmail(user)&&user!=="") {
       inputUser.className = "form-control is-valid";
       return true;
     } else {
@@ -50,7 +50,7 @@ const Login = ({ URLSuperUser, URLUsers }) => {
     }
   };
   const testPassw = () => {
-    if (testPass(pass)) {
+    if (testPass(pass)&&pass!=="") {
       inputPass.className = "form-control is-valid";
       return true;
     } else {
@@ -101,7 +101,7 @@ const Login = ({ URLSuperUser, URLUsers }) => {
     } else {
       return alert("DEBE COMPLETAR TODOS LOS CAMPOS");
     }
-  };
+  };  
   return (
     <div className="text-white">
       <LogBar></LogBar>
