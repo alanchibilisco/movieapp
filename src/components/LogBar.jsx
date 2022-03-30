@@ -34,7 +34,7 @@ const LogBar = () => {
     :
     <>
        <Nav.Link className="text-decoration-none text-white" onClick={handleClose}><FontAwesomeIcon icon={faRightFromBracket} className='mx-2'/></Nav.Link>     
-      <Link to="/" className="text-decorartion-none text-white nav-link"><FontAwesomeIcon icon={faUserCheck} className='mx-2'/></Link>
+      <Link to="/UserFilms" className="text-decorartion-none text-white nav-link"><FontAwesomeIcon icon={faUserCheck} className='mx-2'/></Link>
       <Nav.Link className="text-decorartion-none text-white"><p>{userSession}</p></Nav.Link>
     </>
     }

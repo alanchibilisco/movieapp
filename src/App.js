@@ -8,6 +8,7 @@ import CreateAcc from "./components/CreateAcc";
 import Film from "./components/Film";
 import { useEffect, useState } from "react";
 import Adm from "./components/Adm";
+import UserFilms from "./components/UserFilms";
 function App() {
   const [listStarW, setListStarW] = useState([]);
   const [usersAPI, setUsersAPI]=useState([]);
@@ -55,6 +56,7 @@ function App() {
               element={<CreateAcc URLUsers={URLUsers}></CreateAcc>}
             ></Route>
             <Route exact path="/Film" element={<Film></Film>}></Route>
+            <Route exact path="/UserFilms" element={<UserFilms listStarW={listStarW}></UserFilms>}></Route>
             <Route exact path="/Film/:id" element={<Film></Film>}></Route>
             <Route exact path="/Adm" element={<Adm URLUsers={URLUsers} usersAPI={usersAPI} getAPIUS={getAPIUS}></Adm>}></Route>
           </Routes>
