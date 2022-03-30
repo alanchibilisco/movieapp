@@ -29,8 +29,7 @@ function App() {
   return (
     <div className="">
       <BrowserRouter>
-        <main>
-          <LogBar></LogBar>
+        <main>         
           <Routes>
             <Route exact path="/" element={<Index></Index>}></Route>
             <Route

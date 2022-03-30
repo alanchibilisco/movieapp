@@ -5,75 +5,75 @@ import {
   faHouseChimney,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { testPass, testEmail } from "./Helpers";
-import Swal from "sweetalert2";
-const Login = ({URLSuperUser, URLUsers}) => {
-  
+import LogBar from "./LogBar";
+const Login = ({ URLSuperUser, URLUsers }) => {
+  const navigate=useNavigate();
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [inputUser, setInputUser] = useState("");
   const [inputPass, setInputPass] = useState("");
-  const [superUser, setSuperUser]=useState([]);
-  const [users, setUsers]=useState([]);
-  useEffect(()=>{
+  const [superUser, setSuperUser] = useState([]);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
     setInputUser(document.getElementById("inputUser"));
     setInputPass(document.getElementById("inputPass"));
     getAPISU();
     getAPIUS();
-  },[]);
-  const getAPISU=async()=>{
+  }, []);
+  const getAPISU = async () => {
     try {
-      const res=await fetch(URLSuperUser);
-      const resJson=await res.json();
+      const res = await fetch(URLSuperUser);
+      const resJson = await res.json();
       setSuperUser(resJson);
     } catch (error) {
       console.log(error);
     }
   };
-  const getAPIUS=async()=>{
+  const getAPIUS = async () => {
     try {
-      const res=await fetch(URLUsers);
-      const resJson=await res.json();
+      const res = await fetch(URLUsers);
+      const resJson = await res.json();
       setUsers(resJson);
     } catch (error) {
       console.log(error);
     }
-  }
-  const testUser=()=>{
+  };
+  const testUser = () => {
     if (testEmail(user)) {
-      inputUser.className="form-control is-valid";
+      inputUser.className = "form-control is-valid";
       return true;
-    }else{
-      inputUser.className="form-control is-invalid";
+    } else {
+      inputUser.className = "form-control is-invalid";
       return false;
     }
   };
-  const testPassw=()=>{
+  const testPassw = () => {
     if (testPass(pass)) {
-      inputPass.className="form-control is-valid";
+      inputPass.className = "form-control is-valid";
       return true;
-    }else{
-      inputPass.className="form-control is-invalid";
+    } else {
+      inputPass.className = "form-control is-invalid";
       return false;
     }
   };
-  const gralTest=()=>{
-    if (testUser()&&testPassw()) {
+  const gralTest = () => {
+    if (testUser() && testPassw()) {
       return true;
-    }else{
+    } else {
       return false;
     }
   };
 
-  let session=false;
-  const findUser=()=>{
-    const newUser=users.find((userS)=>{
-      return userS.userName===user;
+  let session = false;
+  const findUser = () => {
+    const newUser = users.find((userS) => {
+      return userS.userName === user;
     });
     if (newUser !== undefined) {
       return newUser;
-    }else{
+    } else {
       return "";
     }
   };
@@ -81,34 +81,30 @@ const Login = ({URLSuperUser, URLUsers}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (gralTest()) {
-      if (user===superUser[0].userName&&pass===superUser[0].password) {
-        session=true;
-        const user='superUser';
+      if (user === superUser[0].userName && pass === superUser[0].password) {
+        session = true;
+        const user = "superUser";
         sessionStorage.setItem("stateSession", JSON.stringify(session));
-        sessionStorage.setItem("userSession", JSON.stringify(user));        
-        return alert("BIENVENIDO ADMINISTRADOR");
-      } else if(user===findUser().userName&&pass===findUser().password){
-        session=true;
-        const user=findUser().userName;
+        sessionStorage.setItem("userSession", JSON.stringify(user));
+        navigate("/");
+        return alert("BIENVENIDO ADMINISTRADOR");       
+      } else if (user === findUser().userName && pass === findUser().password) {
+        session = true;
+        const user = findUser().userName;
         sessionStorage.setItem("stateSession", JSON.stringify(session));
-        sessionStorage.setItem("userSession", JSON.stringify(user)); 
-        return alert(`Bienvenido usuario: ${findUser().userName}`);         
-      } else{
-        return alert('USUARIO O CONTRASEÑA INCORRECTO');  
-      }     
-    }else{
-      return alert('DEBE COMPLETAR TODOS LOS CAMPOS');
+        sessionStorage.setItem("userSession", JSON.stringify(user));
+        navigate("/");
+        return alert(`Bienvenido usuario: ${findUser().userName}`);        
+      } else {
+        return alert("USUARIO O CONTRASEÑA INCORRECTO");
+      }
+    } else {
+      return alert("DEBE COMPLETAR TODOS LOS CAMPOS");
     }
-    console.log("desde submit");
-    console.log(user);
-    console.log(pass);
   };
-  console.log(inputUser);
-  console.log(inputPass);
-  console.log(superUser);
-  console.log(users);
   return (
     <div className="text-white">
+      <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/">
           <FontAwesomeIcon icon={faHouseChimney} className="mx-2 text-white" />
@@ -126,9 +122,7 @@ const Login = ({URLSuperUser, URLUsers}) => {
           <Col xs={12} md={8} lg={4} className="my-5">
             <Form onSubmit={handleSubmit} noValidate>
               <Form.Group className="my-3">
-                <Form.Label htmlFor="inputUser">
-                  Ingrese su email
-                </Form.Label>
+                <Form.Label htmlFor="inputUser">Ingrese su email</Form.Label>
                 <Form.Control
                   placeholder="example@example.com"
                   type="email"

@@ -6,6 +6,7 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import LogBar from "./LogBar";
 const CreateAcc = () => {
 
     const handleSubmit = (e) => {
@@ -14,6 +15,7 @@ const CreateAcc = () => {
       };
   return (
     <div className="text-white">
+      <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/">
           <FontAwesomeIcon icon={faHouseChimney} className="mx-2 text-white" />
@@ -32,7 +34,7 @@ const CreateAcc = () => {
             <Form onSubmit={handleSubmit}>
               <Form.Group className="my-3">
                 <Form.Label htmlFor="inputUser">
-                  Ingrese su usuario o email
+                  Ingrese su email
                 </Form.Label>
                 <Form.Control
                   placeholder="example@example.com"
@@ -43,7 +45,7 @@ const CreateAcc = () => {
               </Form.Group>
               <Form.Group className="my-3">
                 <Form.Label htmlFor="inputPass">
-                  Ingrese su contraseña
+                  Ingrese su contraseña (min 8, max 16 caracteres.,  al menos 1 mayuscula, sin signos)
                 </Form.Label>
                 <Form.Control
                   placeholder="Password"

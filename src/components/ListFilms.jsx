@@ -8,6 +8,7 @@ import {
 import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
 import InfiniteScroll from "react-infinite-scroll-component";
+import LogBar from "./LogBar";
 const ListFilms = ({ listStarW }) => {
   const [listFilms, setListFilms] = useState(listStarW);
   const [search, setSearch] = useState("");
@@ -40,6 +41,7 @@ const ListFilms = ({ listStarW }) => {
 
   return (
     <div className="">
+      <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/">
           <FontAwesomeIcon icon={faHouseChimney} className="mx-2 text-white" />

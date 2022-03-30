@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
+import LogBar from "./LogBar";
 const Film = () => {
   const [filmS, setFilmS] = useState({});
   const { id } = useParams();
@@ -16,6 +17,7 @@ const Film = () => {
   }, []);
   return (
     <div>
+      <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/ListFilms">
           <FontAwesomeIcon icon={faArrowLeft} className="mx-2 text-white" />

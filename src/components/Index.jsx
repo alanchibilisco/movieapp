@@ -6,9 +6,12 @@ import {
 import React from "react";
 import logo from "./img/popcorn.png";
 import { Link } from "react-router-dom";
+import LogBar from "./LogBar";
 const Index = () => {
   return (
+    
     <div>
+      <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/">
           <FontAwesomeIcon
