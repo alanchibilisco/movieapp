@@ -56,7 +56,7 @@ function App() {
               element={<CreateAcc URLUsers={URLUsers}></CreateAcc>}
             ></Route>
             <Route exact path="/Film" element={<Film></Film>}></Route>
-            <Route exact path="/UserFilms" element={<UserFilms listStarW={listStarW}></UserFilms>}></Route>
+            <Route exact path="/UserFilms" element={<UserFilms listStarW={listStarW} URLUsers={URLUsers}></UserFilms>}></Route>
             <Route exact path="/Film/:id" element={<Film></Film>}></Route>
             <Route exact path="/Adm" element={<Adm URLUsers={URLUsers} usersAPI={usersAPI} getAPIUS={getAPIUS}></Adm>}></Route>
           </Routes>

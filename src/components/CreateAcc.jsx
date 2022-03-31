@@ -119,7 +119,7 @@ const CreateAcc = ({URLUsers}) => {
               </Form.Group>
               <Form.Group className="my-3">
                 <Form.Label htmlFor="inputPass">
-                  Ingrese su contraseña (min 8, max 16 caracteres.,  al menos 1 mayuscula, sin signos)
+                  Ingrese su contraseña (min 8, max 16 caracteres.,  al menos 1 mayuscula y 1 numero, sin signos)
                 </Form.Label>
                 <Form.Control
                   placeholder="Password"

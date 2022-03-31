@@ -9,12 +9,21 @@ import {
 import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
 
-const UserFilms = ({listStarW}) => {
+const UserFilms = ({listStarW, URLUsers}) => {
+    const userOBJ=JSON.parse(sessionStorage.getItem("userOBJ"))||"";
     const[listFilms, setListFilms]=useState([]);
-    useEffect(()=>{
-        setListFilms(listStarW);
-    },[listStarW])
-console.log(listFilms);
+    useEffect(async()=>{
+        // setListFilms(listStarW);        
+        try {
+          const res=await fetch(`${URLUsers}/${userOBJ}`);
+          const resJson=await res.json();
+          console.log(resJson); 
+          setListFilms(resJson.favoriteFilms);         
+        } catch (error) {
+          console.log(error);
+        }
+        
+    },[]);
   return (
     <div>
       <LogBar></LogBar>

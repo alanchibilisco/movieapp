@@ -4,6 +4,9 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import LogBar from "./LogBar";
 const Film = () => {
+  const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
+  const userSession = JSON.parse(sessionStorage.getItem("userSession")) || "";
+  const userOBJ = JSON.parse(sessionStorage.getItem("userOBJ"));
   const [filmS, setFilmS] = useState({});
   const { id } = useParams();
   useEffect(async () => {
@@ -29,31 +32,70 @@ const Film = () => {
         </div>
       ) : (
         <div className="text-white my-5">
-          <div className="container-fluid">
-            <div className="text-center">
-              <img src={filmS.image.original} alt="logo" className="img-film" />
-            </div>
+          {session && userSession !== "superUser" ? (
+            <div className="container-fluid">
+              <div className="text-center">
+                <img
+                  src={filmS.image.original}
+                  alt="logo"
+                  className="img-film"
+                />
+              </div>
 
-            <h3 className="text-white text-center fw-bold my-3">
-              {filmS.name}
-            </h3>
-            <div className="text-start">
-              <h6 className="text-white">
-                <b>Lenguaje:</b> {filmS.language}
-              </h6>
-              <h6 className="text-white">
-                <b>Genero:</b> {filmS.genres.join(", ")}
-              </h6>
-              <h6 className="text-white">
-                <b>Fecha de estreno:</b> {filmS.premiered}
-              </h6>
+              <h3 className="text-white text-center fw-bold my-3">
+                {filmS.name}
+              </h3>
+              <div className="text-center">
+                <button className="btn btn-success">Add to favorite</button>
+              </div>
+              <div className="text-start">
+                <h6 className="text-white">
+                  <b>Lenguaje:</b> {filmS.language}
+                </h6>
+                <h6 className="text-white">
+                  <b>Genero:</b> {filmS.genres.join(", ")}
+                </h6>
+                <h6 className="text-white">
+                  <b>Fecha de estreno:</b> {filmS.premiered}
+                </h6>
+              </div>
+              <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
+              <div
+                className="text-white"
+                dangerouslySetInnerHTML={{ __html: filmS.summary }}
+              ></div>
             </div>
-            <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
-            <div
-              className="text-white"
-              dangerouslySetInnerHTML={{ __html: filmS.summary }}
-            ></div>
-          </div>
+          ) : (
+            <div className="container-fluid">
+              <div className="text-center">
+                <img
+                  src={filmS.image.original}
+                  alt="logo"
+                  className="img-film"
+                />
+              </div>
+
+              <h3 className="text-white text-center fw-bold my-3">
+                {filmS.name}
+              </h3>
+              <div className="text-start">
+                <h6 className="text-white">
+                  <b>Lenguaje:</b> {filmS.language}
+                </h6>
+                <h6 className="text-white">
+                  <b>Genero:</b> {filmS.genres.join(", ")}
+                </h6>
+                <h6 className="text-white">
+                  <b>Fecha de estreno:</b> {filmS.premiered}
+                </h6>
+              </div>
+              <h3 className="text-white text-center fw-bold my-3">Sinopsis</h3>
+              <div
+                className="text-white"
+                dangerouslySetInnerHTML={{ __html: filmS.summary }}
+              ></div>
+            </div>
+          )}
         </div>
       )}
     </div>
