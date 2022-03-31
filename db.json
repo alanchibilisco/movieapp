@@ -12,62 +12,9 @@
       "password": "Sitenso123",
       "favoriteFilms": [
         {
-          "id": 52340,
-          "url": "https://www.tvmaze.com/shows/52340/star-wars-visions",
-          "name": "Star Wars: Visions",
-          "type": "Animation",
-          "language": "Japanese",
-          "genres": [
-            "Action",
-            "Anime",
-            "Science-Fiction"
-          ],
-          "status": "To Be Determined",
-          "runtime": null,
-          "averageRuntime": 16,
-          "premiered": "2021-09-22",
-          "ended": null,
-          "officialSite": "https://www.starwars.com/series/star-wars-visions",
-          "schedule": {
-            "time": "",
-            "days": []
-          },
-          "rating": {
-            "average": 7
-          },
-          "weight": 94,
-          "network": null,
-          "webChannel": {
-            "id": 287,
-            "name": "Disney+",
-            "country": null,
-            "officialSite": "https://www.disneyplus.com/"
-          },
-          "dvdCountry": null,
-          "externals": {
-            "tvrage": null,
-            "thetvdb": 393190,
-            "imdb": "tt13622982"
-          },
-          "image": {
-            "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/355/889467.jpg",
-            "original": "https://static.tvmaze.com/uploads/images/original_untouched/355/889467.jpg"
-          },
-          "summary": "<p><b>Star Wars: Visions</b>, an Original Series of animated short films, celebrates the Star Wars galaxy through the lens of the world's best Japanese anime creators. </p>",
-          "updated": 1634677885,
-          "_links": {
-            "self": {
-              "href": "https://api.tvmaze.com/shows/52340"
-            },
-            "previousepisode": {
-              "href": "https://api.tvmaze.com/episodes/2124446"
-            }
-          }
-        },
-        {
-          "id": 117,
-          "url": "https://www.tvmaze.com/shows/117/star-wars-rebels",
-          "name": "Star Wars: Rebels",
+          "id": 36483,
+          "url": "https://www.tvmaze.com/shows/36483/star-wars-resistance",
+          "name": "Star Wars Resistance",
           "type": "Animation",
           "language": "English",
           "genres": [
@@ -78,22 +25,22 @@
           "status": "Ended",
           "runtime": 30,
           "averageRuntime": 32,
-          "premiered": "2014-09-29",
-          "ended": "2018-03-05",
-          "officialSite": "http://disneyxd.disney.com/star-wars-rebels",
+          "premiered": "2018-10-07",
+          "ended": "2020-01-26",
+          "officialSite": "https://disneynow.com/shows/star-wars-resistance",
           "schedule": {
-            "time": "09:00",
+            "time": "22:00",
             "days": [
-              "Monday"
+              "Sunday"
             ]
           },
           "rating": {
-            "average": 8
+            "average": 6.4
           },
-          "weight": 97,
+          "weight": 92,
           "network": {
-            "id": 25,
-            "name": "Disney XD",
+            "id": 78,
+            "name": "Disney Channel",
             "country": {
               "name": "United States",
               "code": "US",
@@ -113,22 +60,22 @@
           },
           "dvdCountry": null,
           "externals": {
-            "tvrage": 35995,
-            "thetvdb": 283468,
-            "imdb": "tt2930604"
+            "tvrage": null,
+            "thetvdb": 351575,
+            "imdb": "tt8336340"
           },
           "image": {
-            "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/353/884619.jpg",
-            "original": "https://static.tvmaze.com/uploads/images/original_untouched/353/884619.jpg"
+            "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/212/531887.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/212/531887.jpg"
           },
-          "summary": "<p><b>Star Wars Rebels</b>, set five years before the events of Star Wars: Episode IV - A New Hope, tells the story of the Rebellion's beginnings while the Empire spreads tyranny through the galaxy.</p>",
-          "updated": 1647424017,
+          "summary": "<p><b>Star Wars Resistance</b> follows Kazuda Xiono, a young pilot recruited by the Resistance and tasked with a top-secret mission to spy on the growing threat of the First Order.</p>",
+          "updated": 1620793903,
           "_links": {
             "self": {
-              "href": "https://api.tvmaze.com/shows/117"
+              "href": "https://api.tvmaze.com/shows/36483"
             },
             "previousepisode": {
-              "href": "https://api.tvmaze.com/episodes/1392976"
+              "href": "https://api.tvmaze.com/episodes/1770421"
             }
           }
         }

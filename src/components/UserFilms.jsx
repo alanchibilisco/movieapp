@@ -7,26 +7,20 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Row } from "react-bootstrap";
-import CardFilm from "./CardFilm";
 import CardFilmsUser from "./CardFilmsUser";
 
-const UserFilms = ({listStarW, URLUsers}) => {
-    const userOBJ=JSON.parse(sessionStorage.getItem("userOBJ"))||"";
-    const[listFilms, setListFilms]=useState([]);
-    useEffect(async()=>{
-        // setListFilms(listStarW);        
-        try {
-          const res=await fetch(`${URLUsers}/${userOBJ}`);
-          console.log(res);
-          const resJson=await res.json();
-          console.log(resJson); 
-          setListFilms(resJson.favoriteFilms);         
-        } catch (error) {
-          console.log(error);
-        }
-        
-    },[]);
-    console.log(listFilms);
+const UserFilms = ({ URLUsers }) => {
+  const userOBJ = JSON.parse(sessionStorage.getItem("userOBJ")) || "";
+  const [listFilms, setListFilms] = useState([]);
+  useEffect(async () => {
+    try {
+      const res = await fetch(`${URLUsers}/${userOBJ}`);
+      const resJson = await res.json();
+      setListFilms(resJson.favoriteFilms);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <div>
       <LogBar></LogBar>
@@ -46,7 +40,7 @@ const UserFilms = ({listStarW, URLUsers}) => {
         <hr />
       </div>
       {listFilms.length === 0 ? (
-        <div className="text.white">          
+        <div className="text.white">
           <div>
             <h2 className="text-white text-center">
               No posees peliculas agregadas a favoritos
@@ -54,17 +48,15 @@ const UserFilms = ({listStarW, URLUsers}) => {
           </div>
         </div>
       ) : (
-        <div>            
-          <Container>           
-              <Row>
-                {listFilms.map((film) => (
-                  <Col xs={6} sm={6} md={6} lg={4} key={film.id}>
-                    {/* <CardFilm film={film} />                    */}
-                    <CardFilmsUser film={film}></CardFilmsUser>
-                    {/* <h2 className="text-white">{film.name}</h2> */}
-                  </Col>
-                ))}
-              </Row>            
+        <div>
+          <Container>
+            <Row>
+              {listFilms.map((film) => (
+                <Col xs={6} sm={6} md={6} lg={4} key={film.id}>                  
+                  <CardFilmsUser film={film}></CardFilmsUser>                  
+                </Col>
+              ))}
+            </Row>
           </Container>
         </div>
       )}
