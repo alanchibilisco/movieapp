@@ -36,9 +36,11 @@ const Film = ({ URLUsers }) => {
       console.log(error);
     }
   };
+  const exist=(element)=>element.id===filmS.id;
+  
   const handleAdd = (e) => {
     e.preventDefault();
-    if (user.favoriteFilms.includes(filmS)) {
+    if (user.favoriteFilms.some(exist)) {
       alert("La pelicula ya existe en sus favoritos");
       return;
     } else {
