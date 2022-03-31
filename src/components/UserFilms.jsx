@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Row } from "react-bootstrap";
 import CardFilm from "./CardFilm";
+import CardFilmsUser from "./CardFilmsUser";
 
 const UserFilms = ({listStarW, URLUsers}) => {
     const userOBJ=JSON.parse(sessionStorage.getItem("userOBJ"))||"";
@@ -59,7 +60,8 @@ const UserFilms = ({listStarW, URLUsers}) => {
                 {listFilms.map((film) => (
                   <Col xs={6} sm={6} md={6} lg={4} key={film.id}>
                     {/* <CardFilm film={film} />                    */}
-                    <h2 className="text-white">{film.name}</h2>
+                    <CardFilmsUser film={film}></CardFilmsUser>
+                    {/* <h2 className="text-white">{film.name}</h2> */}
                   </Col>
                 ))}
               </Row>            

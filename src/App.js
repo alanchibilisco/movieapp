@@ -9,6 +9,7 @@ import Film from "./components/Film";
 import { useEffect, useState } from "react";
 import Adm from "./components/Adm";
 import UserFilms from "./components/UserFilms";
+import FilmUser from "./components/FilmUser";
 function App() {
   const [listStarW, setListStarW] = useState([]);
   const [usersAPI, setUsersAPI]=useState([]);
@@ -58,10 +59,11 @@ function App() {
             <Route exact path="/Film" element={<Film></Film>}></Route>
             <Route exact path="/UserFilms" element={<UserFilms listStarW={listStarW} URLUsers={URLUsers}></UserFilms>}></Route>
             <Route exact path="/Film/:id" element={<Film URLUsers={URLUsers}></Film>}></Route>
+            <Route exact path="/FilmUser/:id" element={<FilmUser URLUsers={URLUsers}></FilmUser>}></Route>
             <Route exact path="/Adm" element={<Adm URLUsers={URLUsers} usersAPI={usersAPI} getAPIUS={getAPIUS}></Adm>}></Route>
           </Routes>
         </main>
-      </BrowserRouter>
+      </BrowserRouter>      
     </div>
   );
 }
