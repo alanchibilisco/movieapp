@@ -16,6 +16,7 @@ const UserFilms = ({listStarW, URLUsers}) => {
         // setListFilms(listStarW);        
         try {
           const res=await fetch(`${URLUsers}/${userOBJ}`);
+          console.log(res);
           const resJson=await res.json();
           console.log(resJson); 
           setListFilms(resJson.favoriteFilms);         
@@ -24,6 +25,7 @@ const UserFilms = ({listStarW, URLUsers}) => {
         }
         
     },[]);
+    console.log(listFilms);
   return (
     <div>
       <LogBar></LogBar>
@@ -55,8 +57,9 @@ const UserFilms = ({listStarW, URLUsers}) => {
           <Container>           
               <Row>
                 {listFilms.map((film) => (
-                  <Col xs={6} sm={6} md={6} lg={4} key={film.show.id}>
-                    <CardFilm film={film} />                   
+                  <Col xs={6} sm={6} md={6} lg={4} key={film.id}>
+                    {/* <CardFilm film={film} />                    */}
+                    <h2 className="text-white">{film.name}</h2>
                   </Col>
                 ))}
               </Row>            

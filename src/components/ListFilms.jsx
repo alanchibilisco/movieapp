@@ -100,7 +100,7 @@ const ListFilms = ({ listStarW }) => {
               <Row>
                 {listFilms.map((film) => (
                   <Col xs={6} sm={6} md={6} lg={4} key={id++}>
-                    <CardFilm film={film} />                   
+                    <CardFilm film={film}/>                   
                   </Col>
                 ))}
               </Row>

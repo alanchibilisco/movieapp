@@ -3,21 +3,54 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import LogBar from "./LogBar";
-const Film = () => {
+const Film = ({ URLUsers }) => {
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
   const userSession = JSON.parse(sessionStorage.getItem("userSession")) || "";
   const userOBJ = JSON.parse(sessionStorage.getItem("userOBJ"));
   const [filmS, setFilmS] = useState({});
+  const [user, setUser] = useState({});
   const { id } = useParams();
+
   useEffect(async () => {
     try {
       const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+      const user = await fetch(`${URLUsers}/${userOBJ}`);
+      const userJson = await user.json();
       const resJson = await res.json();
       setFilmS(resJson);
+      setUser(userJson);
     } catch (error) {
       console.log(error);
     }
   }, []);
+  const update = async () => {
+    try {
+      const res = await fetch(`${URLUsers}/${userOBJ}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleAdd = (e) => {
+    e.preventDefault();
+    if (user.favoriteFilms.includes(filmS)) {
+      alert("La pelicula ya existe en sus favoritos");
+      return;
+    } else {
+      const result = window.confirm(
+        "¿Estas seguro de agregarla a tus favoritos?"
+      );
+      if (result) {
+        user.favoriteFilms.push(filmS);
+        update();
+      }
+    }
+  };
   return (
     <div>
       <LogBar></LogBar>
@@ -46,7 +79,9 @@ const Film = () => {
                 {filmS.name}
               </h3>
               <div className="text-center">
-                <button className="btn btn-success">Add to favorite</button>
+                <button className="btn btn-success" onClick={handleAdd}>
+                  Add to favorite
+                </button>
               </div>
               <div className="text-start">
                 <h6 className="text-white">
