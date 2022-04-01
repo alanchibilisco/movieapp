@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import LogBar from "./LogBar";
 const FilmUser = ({ URLUsers }) => {
   const session = JSON.parse(sessionStorage.getItem("stateSession")) || false;
@@ -10,6 +10,7 @@ const FilmUser = ({ URLUsers }) => {
   const [filmS, setFilmS] = useState({});
   const [user, setUser] = useState({});
   const { id } = useParams();
+  const navigate=useNavigate();
   useEffect(async () => {
     try {
       const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
@@ -49,6 +50,8 @@ const FilmUser = ({ URLUsers }) => {
         );        
         user.favoriteFilms = newFilmS;        
         update();
+        alert("La pelicula fue eliminada de sus favoritos");
+        navigate("/UserFilms");
       }
     }
   };
