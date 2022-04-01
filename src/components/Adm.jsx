@@ -61,12 +61,12 @@ const Adm = ({ URLUsers, usersAPI, getAPIUS }) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr className="text-decoration-none" key={user.id}>
+              <tr className="text-decoration-none" key={user._id}>
                 <td>{user.userName}</td>
                 <td>{user.password}</td>
                 <td>{user.favoriteFilms.length}</td>
                 <td className="text-center">
-                  <Button className="btn-danger" onClick={()=>{handleDelete(user.id)}}>Delete</Button>
+                  <Button className="btn-danger" onClick={()=>{handleDelete(user._id)}}>Delete</Button>
                 </td>
               </tr>
             ))}

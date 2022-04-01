@@ -9,7 +9,7 @@ pass: Sitenso123
 
 User Test:
 
-user: test@sitenso.com
+user: test1@sitenso.com
 pass: Sitenso123
 
 

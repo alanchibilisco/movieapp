@@ -94,7 +94,7 @@ const Login = ({ URLSuperUser, URLUsers }) => {
         const userOBJ=findUser();
         sessionStorage.setItem("stateSession", JSON.stringify(session));
         sessionStorage.setItem("userSession", JSON.stringify(user));
-        sessionStorage.setItem("userOBJ", JSON.stringify(userOBJ.id));
+        sessionStorage.setItem("userOBJ", JSON.stringify(userOBJ._id));
         navigate("/");
         return alert(`Bienvenido usuario: ${findUser().userName}`);        
       } else {
