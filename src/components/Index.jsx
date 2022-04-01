@@ -13,13 +13,13 @@ const Index = () => {
     <div className="text-white">
       <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
-        <Link to="/">
+        <Link to="/" className="text-decoration-none text-warning">
           <FontAwesomeIcon
             icon={faHouseChimney}
             className="mx-2 text-warning"
           />
         </Link>
-        <Link to="/ListFilms">
+        <Link to="/ListFilms" className="text-decoration-none text-white">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="mx-2 text-white"
@@ -31,7 +31,7 @@ const Index = () => {
         <img src={logo} alt="logo pop corn" className="logo-app" />
       </div>
       <div className="text-center text-warning">
-        <h1 className="fw-bold">MoviePop!</h1>
+        <h1 className="fw-bold text-white">MoviePop!</h1>
       </div>
     </div>
   );
