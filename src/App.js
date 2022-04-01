@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Adm from "./components/Adm";
 import UserFilms from "./components/UserFilms";
 import FilmUser from "./components/FilmUser";
+import Error404 from "./components/Error404";
 function App() {
   const [listStarW, setListStarW] = useState([]);
   const [usersAPI, setUsersAPI]=useState([]);
@@ -45,6 +46,7 @@ function App() {
         <main>         
           <Routes>
             <Route exact path="/" element={<Index></Index>}></Route>
+            <Route exact path="*" element={<Error404></Error404>}></Route>
             <Route
               exact
               path="/ListFilms"

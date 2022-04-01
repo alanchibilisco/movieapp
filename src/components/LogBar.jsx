@@ -26,7 +26,8 @@ const LogBar = () => {
       {session ? (
         <div className="d-flex justify-content-end">
           {userSession === "superUser" ? (
-            <>
+            <div>
+              <div className="d-flex justify-content-end">
               <Nav.Link
                 className="text-decoration-none text-white"
                 onClick={handleClose}
@@ -39,12 +40,16 @@ const LogBar = () => {
               >
                 <FontAwesomeIcon icon={faUserCheck} className="mx-2" />
               </Link>
+              </div>
+              <div className="text-end">
               <Nav.Link className="text-decorartion-none text-white">
                 <p>{userSession}</p>
               </Nav.Link>
-            </>
+              </div>
+            </div>
           ) : (
-            <>
+            <div>
+              <div className="d-flex justify-content-end">
               <Nav.Link
                 className="text-decoration-none text-white"
                 onClick={handleClose}
@@ -57,10 +62,13 @@ const LogBar = () => {
               >
                 <FontAwesomeIcon icon={faUserCheck} className="mx-2" />
               </Link>
-              <Nav.Link className="text-decorartion-none text-white">
+              </div>
+              <div className="text-end">
+              <Nav.Link className="text-decorartion-none text-white text-break fs-6">
                 <p>{userSession}</p>
               </Nav.Link>
-            </>
+              </div>
+            </div>
           )}       
         </div>
       ) : (
