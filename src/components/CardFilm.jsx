@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import imageNotFound from "./img/image-not-found.png";
 const CardFilm = ({ film }) => {  
   return (
-    <div className="my-2">      
+    <div className="my-2 text-white">      
       {film.show.image === undefined && film.show.image === null ? (
         <div>
           <h1 className="text-white">aqui esta el error</h1>

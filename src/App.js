@@ -17,7 +17,7 @@ function App() {
   const getApiSW = async () => {
     try {
       const res = await fetch(
-        "http://api.tvmaze.com/search/shows?q=star%20wars."
+        "https://api.tvmaze.com/search/shows?q=star%20wars."
       );
       const resJson = await res.json();
       setListStarW(resJson);

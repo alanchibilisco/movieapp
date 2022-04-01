@@ -10,7 +10,7 @@ import LogBar from "./LogBar";
 const Index = () => {
   return (
     
-    <div>
+    <div className="text-white">
       <LogBar></LogBar>
       <div className="fs-3 text-end container-fluid mt-3">
         <Link to="/">

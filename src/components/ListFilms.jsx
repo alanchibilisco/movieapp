@@ -22,7 +22,7 @@ const ListFilms = ({ listStarW }) => {
     } else {
       try {
         const res = await fetch(
-          `http://api.tvmaze.com/search/shows?q=${value}.`
+          `https://api.tvmaze.com/search/shows?q=${value}.`
         );
         const resJson = await res.json();
         setListFilms(resJson);

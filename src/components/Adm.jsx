@@ -32,9 +32,9 @@ const Adm = ({ URLUsers, usersAPI, getAPIUS }) => {
       }    
   }
   return (
-    <div>
+    <div className="text-white">
       <LogBar></LogBar>
-      <div className="fs-3 text-end container-fluid mt-3">
+      <div className="fs-3 text-end container-fluid mt-3 text-white">
         <Link to="/">
           <FontAwesomeIcon icon={faHouseChimney} className="mx-2 text-white" />
         </Link>
